@@ -10,6 +10,8 @@ namespace lab_1
     class Grid:IPoints
     {
         private float Step;
+        private float Width;
+        private float Height;
         private float Size;
         private List<MyPoint> GridPoints;
 
@@ -17,6 +19,9 @@ namespace lab_1
         {
             Step = _step;
             Size = Math.Max(_width, _height);
+
+            Width = _width;
+            Height = _height;
             CalculateGridPoints();
         }
 
@@ -40,22 +45,6 @@ namespace lab_1
             List<MyPoint> ListToReturn = new List<MyPoint>();
             for(float i = 0; i < Size; i += Step)
             {
-                //for (float j = i; j < Size; j++)
-                //{
-
-                //    PointF Xstart = new PointF(i, j);
-                //    PointF Xend = new PointF(i, j+1);
-                //    PointF Ystart = new PointF(j, i);
-                //    PointF Yend = new PointF(j+1, i);
-
-                //    ListToReturn.Add(new MyPoint(Xstart, true));
-                //    ListToReturn.Add(new MyPoint(Xend, false));
-                //    ListToReturn.Add(new MyPoint(Ystart, true));
-                //    ListToReturn.Add(new MyPoint(Yend, false));
-                //}
-
-
-
                 PointF Xstart = new PointF(i, 0);
                 PointF Xend = new PointF(i, Size);
                 PointF Ystart = new PointF(0, i);
@@ -69,5 +58,52 @@ namespace lab_1
 
             GridPoints = ListToReturn;
         }
+
+        //private void CalculateGridPoints()
+        //{
+        //    List<MyPoint> ListToReturn = new List<MyPoint>();
+
+
+
+
+        //    for (float i = Width/2; i < Width; i += Step)
+        //    {
+        //        PointF start = new PointF(i, 0);
+        //        PointF end = new PointF(i, Height);
+
+        //        ListToReturn.Add(new MyPoint(start, true));
+        //        ListToReturn.Add(new MyPoint(end, false));
+                
+        //    }
+        //    for (float i = Width / 2 - Step; i > 0; i -= Step)
+        //    {
+        //        PointF start = new PointF(i, 0);
+        //        PointF end = new PointF(i, Height);
+
+        //        ListToReturn.Add(new MyPoint(start, true));
+        //        ListToReturn.Add(new MyPoint(end, false));
+        //    }
+
+        //    for (float i = Height / 2; i < Height; i += Step)
+        //    {
+        //        PointF start = new PointF(0, i);
+        //        PointF end = new PointF(Width, i);
+
+        //        ListToReturn.Add(new MyPoint(start, true));
+        //        ListToReturn.Add(new MyPoint(end, false));
+
+        //    }
+        //    for (float i = Height / 2 - Step; i > 0; i -= Step)
+        //    {
+        //        PointF start = new PointF(0, i);
+        //        PointF end = new PointF(Width, i);
+
+        //        ListToReturn.Add(new MyPoint(start, true));
+        //        ListToReturn.Add(new MyPoint(end, false));
+
+        //    }
+
+        //    GridPoints = ListToReturn;
+        //}
     }
 }

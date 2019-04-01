@@ -11,17 +11,17 @@ namespace lab_1
     {
         public PointF Point;
         public bool NewStart;
-        public int Weight { get; set; }
+        public float Weight { get; set; }
 
 
-        public MyPoint(PointF _point, bool _ns, int _weight = 1)
+        public MyPoint(PointF _point, bool _ns, float _weight = 1)
         {
             Point = _point;
             NewStart = _ns;
             Weight = _weight;
         }
 
-        public MyPoint(float _x, float _y, bool _ns, int _weight = 1)
+        public MyPoint(float _x, float _y, bool _ns, float _weight = 1)
         {
             Point = new PointF(_x, _y);
             NewStart = _ns;

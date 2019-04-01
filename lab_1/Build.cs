@@ -53,5 +53,22 @@ namespace lab_1
             if (res > 90) res %= 90;
             return res;
         }
+
+        public List<MyPoint> Arrow(PointF point, float angle)
+        {
+            List<MyPoint> ListToReturn = new List<MyPoint>();
+            int lenght = 20;
+            int arrowAngle = 15;
+            angle = (angle + 180) % 360;
+            PointF pointArrowLeft = GetPointByAngle(point, lenght, (angle + (360 - arrowAngle)) % 360);
+            PointF pointArrowRight = GetPointByAngle(point, lenght, (angle + arrowAngle) % 360);
+
+            ListToReturn.Add(new MyPoint(point, true));
+            ListToReturn.Add(new MyPoint(pointArrowLeft, false));
+            ListToReturn.Add(new MyPoint(point, true));
+            ListToReturn.Add(new MyPoint(pointArrowRight, false));
+
+            return ListToReturn;
+        }
     }
 }

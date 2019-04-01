@@ -75,11 +75,11 @@ namespace lab_1
                 float Y = p.Point.Y;
                 float W = p.Weight;
 
-                //float newX = (startPoint.Point.X * startPoint.Weight + X_AxleEnd.Point.X * X_AxleEnd.Weight * p.Point.X + Y_AxleEnd.Point.X * Y_AxleEnd.Weight * p.Point.Y)/(startPoint.Weight+X_AxleEnd.Weight*)
                 float newX = (X0 * W0 + Xx * Wx * X + Xy * Wy * Y) / (W0 + Wx * X + Wy * Y);
                 float newY = (Y0 * W0 + Yx * Wx * X + Yy * Wy * Y) / (W0 + Wx * X + Wy * Y);
                 p.SetPoint(new PointF(newX, newY));
             }        
+            
 
             return myPoints;
         }

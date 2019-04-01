@@ -83,16 +83,25 @@ namespace lab_1
             List<MyPoint> gridPoints = G.GetPoints();
             for (int i = 0; i < gridPoints.Count; i++)
                 if (!gridPoints[i].IsNewStart()) graphics.DrawLine(gridPen, gridPoints[i - 1].GetPoint(), gridPoints[i].GetPoint());
-            //PointF CoordinatesStart = gridPoints.First().GetPoint();
-            //graphics.DrawString($"X: {CoordinatesStart.X} Y: {CoordinatesStart.Y}", gridSizeFont, gridSizeBrush, CoordinatesStart);
+
             float sizeCounter = 0;
-            for(int i=2;i<gridPoints.Count; i += 4)
+            for (int i = 2; i < gridPoints.Count; i += 4)
             {
                 graphics.DrawString(sizeCounter.ToString(), gridSizeFont, gridSizeBrush, gridPoints[i - 2].GetPoint());
                 graphics.DrawString(sizeCounter.ToString(), gridSizeFont, gridSizeBrush, gridPoints[i].GetPoint());
                 sizeCounter += grid.GetStep();
             }
 
+            List<MyPoint> Axle = new List<MyPoint>();
+            Axle.Add(new MyPoint(0, 0, true));
+            Axle.Add(new MyPoint(sizeBmp.Width - 100, 0, false));
+            Axle.Add(new MyPoint(0, 0, true));
+            Axle.Add(new MyPoint(0, sizeBmp.Height - 100, false));
+            Build b = new Build();
+            Axle.AddRange(b.Arrow(new PointF(sizeBmp.Width - 100, 0), 0));
+            Axle.AddRange(b.Arrow(new PointF(0, sizeBmp.Height - 100), 90));
+            for (int i = 0; i < Axle.Count; i++)
+                if (!Axle[i].IsNewStart()) graphics.DrawLine(new Pen(Color.Black, 1), Axle[i - 1].GetPoint(), Axle[i].GetPoint());
             return bmp;
         }
 

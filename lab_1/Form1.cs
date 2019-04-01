@@ -60,7 +60,7 @@ namespace lab_1
 
         private void grid_checkbox_CheckedChanged(object sender, EventArgs e)
         {
-            if (draw.IsGridEmpty()) draw.SetGrid(new Grid((float)gridSize_nud.Value, showField.Width, showField.Height));
+            if (draw.IsGridEmpty()) draw.SetGrid(grid = new Grid((float)gridSize_nud.Value, showField.Width, showField.Height));
             draw.SetShowGrid(grid_checkbox.Checked);
             showField.Image = draw.ShowDrawing();
 
@@ -68,7 +68,7 @@ namespace lab_1
 
         private void gridSize_nud_ValueChanged(object sender, EventArgs e)
         {
-            draw.SetGrid(new Grid((float)gridSize_nud.Value, showField.Width, showField.Height));
+            draw.SetGrid(grid = new Grid((float)gridSize_nud.Value, showField.Width, showField.Height));
             showField.Image = draw.ShowDrawing();
         }
 
@@ -109,17 +109,15 @@ namespace lab_1
 
         private void projective_btn_Click(object sender, EventArgs e)
         {
-            MyPoint xEnd = new MyPoint(2000, 0, true, 1);
-            MyPoint yEnd = new MyPoint(0, 2000, true, 1);
-            MyPoint startPoint = new MyPoint(0, 0, true, 2000);
+            MyPoint xEnd = new MyPoint((float)XE_x_nud.Value, (float)XE_y_nud.Value, true, (float)XE_w_nud.Value);
+            MyPoint yEnd = new MyPoint((float)YE_x_nud.Value, (float)YE_y_nud.Value, true, (float)YE_w_nud.Value);
+            MyPoint startPoint = new MyPoint((float)X0_nud.Value, (float)Y0_nud.Value, true, (float)W0_nud.Value);
 
             if (draw.FigureExists())
             {
                 figure.SetPoints(Transform.Projective(figure, startPoint, xEnd, yEnd));
-                figure.SetPoints(Transform.Show(figure));
 
                 grid.SetPoints(Transform.Projective(grid, startPoint, xEnd, yEnd));
-                grid.SetPoints(Transform.Show(grid));
 
                 draw.SetFigure(figure);
                 draw.SetGrid(grid);
@@ -146,7 +144,7 @@ namespace lab_1
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
             controls_panel.Height = this.Size.Height - 60;
-            showField.Width = this.Size.Width - 240;
+            showField.Width = this.Size.Width - 287;
             showField.Height = this.Size.Height - 60;
             Bitmap bmp = new Bitmap(showField.Width, showField.Height);
             draw.SetSizeBmp(bmp);
