@@ -97,6 +97,7 @@
             this.projective_btn = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Acurve_nud = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.Y_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.X_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSize_nud)).BeginInit();
@@ -117,6 +118,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Ty_nud)).BeginInit();
             this.figure_tabControl.SuspendLayout();
             this.detail_page.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.figureSize_nud)).BeginInit();
             this.controls_panel.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -131,6 +133,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.X0_nud)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Acurve_nud)).BeginInit();
             this.SuspendLayout();
             // 
             // label9
@@ -801,13 +804,14 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Controls.Add(this.Acurve_nud);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(234, 293);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // figureColor_btn
             // 
@@ -1093,6 +1097,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Affine";
             // 
+            // Acurve_nud
+            // 
+            this.Acurve_nud.Location = new System.Drawing.Point(50, 123);
+            this.Acurve_nud.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.Acurve_nud.Name = "Acurve_nud";
+            this.Acurve_nud.Size = new System.Drawing.Size(120, 20);
+            this.Acurve_nud.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1126,6 +1142,7 @@
             this.figure_tabControl.ResumeLayout(false);
             this.detail_page.ResumeLayout(false);
             this.detail_page.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.figureSize_nud)).EndInit();
             this.controls_panel.ResumeLayout(false);
             this.controls_panel.PerformLayout();
@@ -1144,6 +1161,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Acurve_nud)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1219,6 +1237,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.NumericUpDown Acurve_nud;
     }
 }
 

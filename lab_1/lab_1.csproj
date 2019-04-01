@@ -45,17 +45,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Figures\Axle.cs" />
     <Compile Include="Build.cs" />
-    <Compile Include="Detail.cs" />
+    <Compile Include="Figures\Curve.cs" />
+    <Compile Include="Figures\Detail.cs" />
     <Compile Include="Draw.cs" />
-    <Compile Include="IPoints.cs" />
+    <Compile Include="Figures\IPoints.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Grid.cs" />
+    <Compile Include="Figures\Grid.cs" />
     <Compile Include="MyPoint.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using lab_1.Figures;
 
 namespace lab_1
 {
@@ -17,6 +18,7 @@ namespace lab_1
         Draw draw;
         IPoints figure;
         Grid grid;
+        Axle axle;
         public Form1()
         {
             InitializeComponent();
@@ -24,6 +26,7 @@ namespace lab_1
             showField.Image = bmp;
             draw = new Draw((Bitmap)showField.Image);
             grid = new Grid((float)gridSize_nud.Value, showField.Width, showField.Height);
+            axle = new Axle(showField.Width, showField.Height);
             draw.SetGrid(grid);
         }
 
@@ -36,7 +39,15 @@ namespace lab_1
                     figure = new Detail((float)X_nud.Value, (float)Y_nud.Value, (float)A_nud.Value, (float)B_nud.Value, (float)C_nud.Value, (float)D_nud.Value, (float)E_nud.Value, (float)R1_nud.Value, (float)R2_nud.Value, (float)R3_nud.Value);
                     break;
                 case 1:
-                    //place for krivaya
+                    figure = new Curve((float)Acurve_nud.Value);
+                    //Form form = new Form();
+                    //RichTextBox rtb1 = new RichTextBox();
+                    //foreach (MyPoint p in figure.GetPoints())
+                    //    rtb1.Text += $"\n X: {p.Point.X}; Y: {p.Point.Y}";
+                    //rtb1.Parent = form;
+                    //rtb1.Width = 300;
+                    ////rtb1.Height = form.Height = figure.GetPoints().Count * 10;
+                    //form.ShowDialog();
                     break;
             }
             
@@ -60,7 +71,12 @@ namespace lab_1
 
         private void grid_checkbox_CheckedChanged(object sender, EventArgs e)
         {
-            if (draw.IsGridEmpty()) draw.SetGrid(grid = new Grid((float)gridSize_nud.Value, showField.Width, showField.Height));
+            if (draw.IsGridEmpty())
+            {
+                draw.SetGrid(grid = new Grid((float)gridSize_nud.Value, showField.Width, showField.Height));
+                axle = new Axle(showField.Width, showField.Height);
+            }
+            
             draw.SetShowGrid(grid_checkbox.Checked);
             showField.Image = draw.ShowDrawing();
 

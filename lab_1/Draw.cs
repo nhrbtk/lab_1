@@ -15,7 +15,9 @@ namespace lab_1
         private Font gridSizeFont = new Font("Calibri", 9);
 
         private IPoints figure;
+        private Viewport viewport;
         private Grid grid;
+        private Axle axle;
         private bool showGrid = false;
         private bool showFigure = false;
 
@@ -38,6 +40,7 @@ namespace lab_1
         public Draw(Bitmap _sizeBmp)
         {
             sizeBmp = _sizeBmp;
+            viewport = new Viewport(sizeBmp.Width, sizeBmp.Height);
             showGrid = false;
             showFigure = false;
         }
@@ -74,6 +77,7 @@ namespace lab_1
         public void SetSizeBmp(Bitmap _sizeBmp)
         {
             sizeBmp = _sizeBmp;
+            viewport= new Viewport(sizeBmp.Width, sizeBmp.Height);
         }
 
         private Bitmap DrawGrid(Grid G)
@@ -92,16 +96,15 @@ namespace lab_1
                 sizeCounter += grid.GetStep();
             }
 
-            List<MyPoint> Axle = new List<MyPoint>();
-            Axle.Add(new MyPoint(0, 0, true));
-            Axle.Add(new MyPoint(sizeBmp.Width - 100, 0, false));
-            Axle.Add(new MyPoint(0, 0, true));
-            Axle.Add(new MyPoint(0, sizeBmp.Height - 100, false));
-            Build b = new Build();
-            Axle.AddRange(b.Arrow(new PointF(sizeBmp.Width - 100, 0), 0));
-            Axle.AddRange(b.Arrow(new PointF(0, sizeBmp.Height - 100), 90));
-            for (int i = 0; i < Axle.Count; i++)
-                if (!Axle[i].IsNewStart()) graphics.DrawLine(new Pen(Color.Black, 1), Axle[i - 1].GetPoint(), Axle[i].GetPoint());
+            if (axle != null)
+            {
+                List<MyPoint> A = axle.GetPoints();
+
+                for (int i = 0; i < A.Count; i++)
+                    if (!A[i].IsNewStart()) graphics.DrawLine(new Pen(Color.Black, 1), A[i - 1].GetPoint(), A[i].GetPoint());
+                graphics.DrawString("X, pixels", gridSizeFont, Brushes.Black, A[1].GetPoint());
+                graphics.DrawString("Y, pixels", gridSizeFont, Brushes.Black, A[3].GetPoint());
+            }
             return bmp;
         }
 
@@ -137,6 +140,11 @@ namespace lab_1
         public bool GridExists()
         {
             return showGrid;
+        }
+
+        public void SetAxle(Axle _axle)
+        {
+            axle = _axle;
         }
 
         public void Clear()

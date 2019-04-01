@@ -63,9 +63,8 @@ namespace lab_1
             PointF pointArrowLeft = GetPointByAngle(point, lenght, (angle + (360 - arrowAngle)) % 360);
             PointF pointArrowRight = GetPointByAngle(point, lenght, (angle + arrowAngle) % 360);
 
-            ListToReturn.Add(new MyPoint(point, true));
-            ListToReturn.Add(new MyPoint(pointArrowLeft, false));
-            ListToReturn.Add(new MyPoint(point, true));
+            ListToReturn.Add(new MyPoint(pointArrowLeft, true));
+            ListToReturn.Add(new MyPoint(point, false));
             ListToReturn.Add(new MyPoint(pointArrowRight, false));
 
             return ListToReturn;
