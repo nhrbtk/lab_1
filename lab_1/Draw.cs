@@ -29,6 +29,7 @@ namespace lab_1
 
         public Draw(Bitmap _sizeBmp, IPoints _F, Grid _G, bool _showGrid)
         {
+
             figure = _F;
             grid = _G;
             showGrid = _showGrid;
@@ -77,14 +78,14 @@ namespace lab_1
         public void SetSizeBmp(Bitmap _sizeBmp)
         {
             sizeBmp = _sizeBmp;
-            viewport= new Viewport(sizeBmp.Width, sizeBmp.Height);
+            viewport = new Viewport(sizeBmp.Width, sizeBmp.Height);
         }
 
         private Bitmap DrawGrid(Grid G)
         {
             Bitmap bmp = new Bitmap(sizeBmp);
             Graphics graphics = Graphics.FromImage(bmp);
-            List<MyPoint> gridPoints = G.GetPoints();
+            List<MyPoint> gridPoints = viewport.FactToLogic(G.GetPoints());
             for (int i = 0; i < gridPoints.Count; i++)
                 if (!gridPoints[i].IsNewStart()) graphics.DrawLine(gridPen, gridPoints[i - 1].GetPoint(), gridPoints[i].GetPoint());
 
@@ -98,7 +99,7 @@ namespace lab_1
 
             if (axle != null)
             {
-                List<MyPoint> A = axle.GetPoints();
+                List<MyPoint> A = viewport.FactToLogic(axle.GetPoints());
 
                 for (int i = 0; i < A.Count; i++)
                     if (!A[i].IsNewStart()) graphics.DrawLine(new Pen(Color.Black, 1), A[i - 1].GetPoint(), A[i].GetPoint());
@@ -113,7 +114,7 @@ namespace lab_1
             Bitmap bmp = new Bitmap(sizeBmp);
             Graphics graphics = Graphics.FromImage(bmp);
 
-            List<MyPoint> figurePoints = F.GetPoints();
+            List<MyPoint> figurePoints = viewport.FactToLogic(F.GetPoints());
             for (int i = 0; i < figurePoints.Count; i++)
                 if (!figurePoints[i].IsNewStart()) graphics.DrawLine(figurePen, figurePoints[i - 1].GetPoint(), figurePoints[i].GetPoint());
 

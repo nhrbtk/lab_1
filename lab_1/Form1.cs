@@ -27,6 +27,7 @@ namespace lab_1
             draw = new Draw((Bitmap)showField.Image);
             grid = new Grid((float)gridSize_nud.Value, showField.Width, showField.Height);
             axle = new Axle(showField.Width, showField.Height);
+
             draw.SetGrid(grid);
         }
 
